@@ -2196,12 +2196,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios.post("/Son/store", _this.son).then(function (res) {
+                return axios.post('/Sons/store', _this.son).then(function (res) {
                   if (res.data.saved) {
                     alert("Hijo guardado");
                     _this.son = {};
 
-                    _this.$children.sons_update.push(res.data.son);
+                    _this.$parent.sons_update.push(res.data.son);
                   }
                 });
 
@@ -2229,15 +2229,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Form__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form */ "./resources/js/components/child/Form.vue");
-/* harmony import */ var _Table__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Table */ "./resources/js/components/child/Table.vue");
+/* harmony import */ var _Form_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue */ "./resources/js/components/child/Form.vue");
+/* harmony import */ var _Table_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Table.vue */ "./resources/js/components/child/Table.vue");
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['parents', 'sons'],
   components: {
-    FormSon: _Form__WEBPACK_IMPORTED_MODULE_0__["default"],
-    TableSon: _Table__WEBPACK_IMPORTED_MODULE_1__["default"]
+    FormSon: _Form_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    TableSon: _Table_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
@@ -2270,7 +2270,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['sons'],
   methods: {
-    deleteSon: function deleteSon(Son) {
+    deleteSon: function deleteSon(son) {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -2293,6 +2293,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     }
+  },
+  editSon: function editSon(son) {
+    var _this2 = this;
+
+    return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return axios.edit("/Son/edit/".concat(son.id)).then(function (res) {
+                if (res.data.edit) {
+                  _this2.$children.sons_update.splice(index, 1);
+                }
+              });
+
+            case 2:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }))();
   }
 });
 
@@ -2339,14 +2362,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/City/store', _this.city).then(function (res) {
+                return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/city/store', _this.city).then(function (res) {
                   if (res.data.saved) {
+                    alert('Ciudad guardada');
                     _this.city = {
                       name: null
                     };
-                    alert('Ciudad guardada');
 
-                    _this.$parent.city_update.push(res.data.cities);
+                    _this.$parent.city_update.push(res.data.city);
                   }
                 });
 
@@ -2374,15 +2397,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Form__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form */ "./resources/js/components/city/Form.vue");
-/* harmony import */ var _Table__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Table */ "./resources/js/components/city/Table.vue");
+/* harmony import */ var _Form_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue */ "./resources/js/components/city/Form.vue");
+/* harmony import */ var _Table_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Table.vue */ "./resources/js/components/city/Table.vue");
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['cities'],
   components: {
-    FormCity: _Form__WEBPACK_IMPORTED_MODULE_0__["default"],
-    TableCity: _Table__WEBPACK_IMPORTED_MODULE_1__["default"]
+    FormCity: _Form_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    TableCity: _Table_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
@@ -2440,6 +2463,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     }
+  },
+  editCity: function editCity(city) {
+    var _this2 = this;
+
+    return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return axios.edit("/City/edit/".concat(city.id)).then(function (res) {
+                if (res.data.edit) {
+                  _this2.$parent.cities_update.splice(index, 1);
+                }
+              });
+
+            case 2:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }))();
   }
 });
 
@@ -2487,7 +2533,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios.post('/person/store', _this.person).then(function (res) {
+                return axios.post('/People/store', _this.person).then(function (res) {
                   if (res.data.saved) {
                     alert('Persona guardada');
                     _this.person = {};
@@ -2502,6 +2548,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee);
+      }))();
+    },
+    updatePerson: function updatePerson() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return axios.post("/People/update/".concat(person.id)).then(function (res) {
+                  if (res.data.saved) {
+                    alert('Persona actualizada');
+                    _this2.person = {};
+
+                    _this2.$parent.people_update.push(res.data.person);
+                  }
+                });
+
+              case 2:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
       }))();
     }
   }
@@ -2520,15 +2592,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Form__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form */ "./resources/js/components/person/Form.vue");
-/* harmony import */ var _Table__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Table */ "./resources/js/components/person/Table.vue");
+/* harmony import */ var _Form_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue */ "./resources/js/components/person/Form.vue");
+/* harmony import */ var _Table_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Table.vue */ "./resources/js/components/person/Table.vue");
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['cities', 'people'],
   components: {
-    FormPerson: _Form__WEBPACK_IMPORTED_MODULE_0__["default"],
-    TablePerson: _Table__WEBPACK_IMPORTED_MODULE_1__["default"]
+    FormPerson: _Form_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    TablePerson: _Table_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
@@ -2570,7 +2642,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios["delete"]("/Person/delete/".concat(person.id)).then(function (res) {
+                return axios["delete"]("/People/delete/".concat(person.id)).then(function (res) {
                   if (res.data["delete"]) {
                     _this.$parent.people_update.splice(index, 1);
                   }
@@ -2582,6 +2654,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee);
+      }))();
+    },
+    editPerson: function editPerson(person) {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return axios.edit("/People/edit/".concat(person.id)).then(function (res) {
+                  if (res.data.edit) {
+                    _this2.$parent.people_update.splice(index, 1);
+                  }
+                });
+
+              case 2:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
       }))();
     }
   }
@@ -2775,21 +2870,24 @@ var render = function render() {
 
   return _c("table", {
     staticClass: "table mt-4"
-  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.sons, function (son, index) {
+  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.parents, function (person, index) {
     return _c("tr", {
       key: index
-    }, [_c("td", [_vm._v(_vm._s(_vm.person.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.person.age))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.person.parent.name))]), _vm._v(" "), _c("td", [_c("a", {
-      attrs: {
-        href: "/Person/edit/".concat(son.id)
-      }
-    }), _vm._v(" "), _c("button", {
+    }, [_c("td", [_vm._v(_vm._s(_vm.son.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.son.age))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.parent.person.name))]), _vm._v(" "), _c("td", [_c("button", {
       staticClass: "btn btn-danger text-white",
       on: {
         click: function click($event) {
-          return _vm.deleteSon(son);
+          return _vm.deleteSon(person, index);
         }
       }
-    }, [_vm._v("Delete")])])]);
+    }, [_vm._v("Delete")]), _vm._v(" "), _c("button", {
+      staticClass: "btn btn-dark text-white",
+      on: {
+        click: function click($event) {
+          return _vm.editSon(person, index);
+        }
+      }
+    }, [_vm._v("Edit")])])]);
   }), 0)]);
 };
 
@@ -2797,7 +2895,9 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("thead", [_c("tr", [_c("th", [_vm._v("Name")]), _vm._v(" "), _c("th", [_vm._v("Age")]), _vm._v(" "), _c("th", [_vm._v("Actions")])])]);
+  return _c("thead", {
+    staticClass: "text-white font-weight-bold thead-dark"
+  }, [_c("tr", [_c("th", [_vm._v("Name")]), _vm._v(" "), _c("th", [_vm._v("Age")]), _vm._v(" "), _c("th", [_vm._v("Parents")]), _vm._v(" "), _c("th", [_vm._v("Actions")])])]);
 }];
 render._withStripped = true;
 
@@ -2936,7 +3036,14 @@ var render = function render() {
           return _vm.deleteCity(city, index);
         }
       }
-    }, [_vm._v("Delete")])])]);
+    }, [_vm._v("Delete")]), _vm._v(" "), _c("button", {
+      staticClass: "btn btn-dark text-white",
+      on: {
+        click: function click($event) {
+          return _vm.editCity(city, index);
+        }
+      }
+    }, [_vm._v("Edit")])])]);
   }), 0)])])]);
 };
 
@@ -3027,7 +3134,7 @@ var render = function render() {
     }],
     staticClass: "form-control",
     attrs: {
-      type: "text",
+      type: "number",
       required: ""
     },
     domProps: {
@@ -3049,7 +3156,7 @@ var render = function render() {
     }],
     staticClass: "form-control",
     attrs: {
-      type: "tel",
+      type: "number",
       required: ""
     },
     domProps: {
@@ -3194,18 +3301,21 @@ var render = function render() {
   }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.people, function (person, index) {
     return _c("tr", {
       key: index
-    }, [_c("td", [_vm._v(_vm._s(person.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(person.last_name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(person.age))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(person.phone))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(person.city.name))]), _vm._v(" "), _c("td", [_c("a", {
-      attrs: {
-        href: "/Person/edit/".concat(person.id)
-      }
-    }), _vm._v(" "), _c("button", {
+    }, [_c("td", [_vm._v(_vm._s(person.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(person.last_name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(person.age))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(person.phone))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(person.city.name))]), _vm._v(" "), _c("td", [_c("button", {
       staticClass: "btn btn-danger text-white",
       on: {
         click: function click($event) {
-          return _vm.deletePerson(person);
+          return _vm.deletePerson(person, index);
         }
       }
-    }, [_vm._v("Delete")])])]);
+    }, [_vm._v("Delete")]), _vm._v(" "), _c("button", {
+      staticClass: "btn btn-dark text-white",
+      on: {
+        click: function click($event) {
+          return _vm.editPerson(person, index);
+        }
+      }
+    }, [_vm._v("Edit")])])]);
   }), 0)]);
 };
 
@@ -3213,7 +3323,9 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("thead", [_c("tr", [_c("th", [_vm._v("Name")]), _vm._v(" "), _c("th", [_vm._v("Last name")]), _vm._v(" "), _c("th", [_vm._v("Age")]), _vm._v(" "), _c("th", [_vm._v("Phone")]), _vm._v(" "), _c("th", [_vm._v("City")]), _vm._v(" "), _c("th", [_vm._v("Actions")])])]);
+  return _c("thead", {
+    staticClass: "text-white font-weight-bold thead-dark"
+  }, [_c("tr", [_c("th", [_vm._v("Name")]), _vm._v(" "), _c("th", [_vm._v("Last name")]), _vm._v(" "), _c("th", [_vm._v("Age")]), _vm._v(" "), _c("th", [_vm._v("Phone")]), _vm._v(" "), _c("th", [_vm._v("City")]), _vm._v(" "), _c("th", [_vm._v("Actions")])])]);
 }];
 render._withStripped = true;
 
@@ -3230,12 +3342,12 @@ render._withStripped = true;
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var _components_person_Index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/person/Index */ "./resources/js/components/person/Index.vue");
-/* harmony import */ var _components_person_Form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/person/Form */ "./resources/js/components/person/Form.vue");
-/* harmony import */ var _components_child_Index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/child/Index */ "./resources/js/components/child/Index.vue");
-/* harmony import */ var _components_child_Form__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/child/Form */ "./resources/js/components/child/Form.vue");
-/* harmony import */ var _components_city_Index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/city/Index */ "./resources/js/components/city/Index.vue");
-/* harmony import */ var _components_city_Form__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/city/Form */ "./resources/js/components/city/Form.vue");
+/* harmony import */ var _components_person_Index_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/person/Index.vue */ "./resources/js/components/person/Index.vue");
+/* harmony import */ var _components_person_Form_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/person/Form.vue */ "./resources/js/components/person/Form.vue");
+/* harmony import */ var _components_child_Index_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/child/Index.vue */ "./resources/js/components/child/Index.vue");
+/* harmony import */ var _components_child_Form_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/child/Form.vue */ "./resources/js/components/child/Form.vue");
+/* harmony import */ var _components_city_Index_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/city/Index.vue */ "./resources/js/components/city/Index.vue");
+/* harmony import */ var _components_city_Form_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/city/Form.vue */ "./resources/js/components/city/Form.vue");
 
 
 
@@ -3247,12 +3359,12 @@ __webpack_require__.r(__webpack_exports__);
 new vue__WEBPACK_IMPORTED_MODULE_7__["default"]({
   el: '#app',
   components: {
-    IndexPerson: _components_person_Index__WEBPACK_IMPORTED_MODULE_1__["default"],
-    FormPerson: _components_person_Form__WEBPACK_IMPORTED_MODULE_2__["default"],
-    IndexSon: _components_child_Index__WEBPACK_IMPORTED_MODULE_3__["default"],
-    FormSon: _components_child_Form__WEBPACK_IMPORTED_MODULE_4__["default"],
-    IndexCity: _components_city_Index__WEBPACK_IMPORTED_MODULE_5__["default"],
-    FormCity: _components_city_Form__WEBPACK_IMPORTED_MODULE_6__["default"]
+    IndexPerson: _components_person_Index_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    FormPerson: _components_person_Form_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    IndexSon: _components_child_Index_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    FormSon: _components_child_Form_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    IndexCity: _components_city_Index_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+    FormCity: _components_city_Form_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
   }
 });
 

@@ -1,5 +1,9 @@
 <x-app>
-<section class="container">
+    <section>
+        <h1>Edit son</h1>
+        <from-son :parents="{{ $parents }}" :sons="{{ $sons }}"></from-son>
+    </section>
+{{-- <section class="container">
 
     <form action="{{ route('son.update', $son->id) }}" method="Post">
         @csrf
@@ -23,5 +27,5 @@
             <button class="btn btn-success">Save</button>
         </div>
     </form>
-</section>
+</section> --}}
 </x-app>

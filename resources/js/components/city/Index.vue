@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import FormCity from './Form'
-import TableCity from './Table'
+import FormCity from './Form.vue'
+import TableCity from './Table.vue'
 
 export default{
     props: ['cities'],

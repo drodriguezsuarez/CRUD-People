@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import FormPerson from './Form'
-import TablePerson from './Table'
+import FormPerson from './Form.vue'
+import TablePerson from './Table.vue'
 
 export default {
     props: ['cities', 'people'],

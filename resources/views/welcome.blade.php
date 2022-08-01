@@ -80,4 +80,4 @@
             </tbody>
         </table>
     </section> --}}
-</x-app>
+</x-app>    

@@ -36,11 +36,11 @@ export default {
     },
   methods: {
     async storeSon() {
-      await axios.post(`/Son/store`, this.son ).then((res) => {
-        if ( res.data.saved ) {
+      await axios.post('/Sons/store', this.son ).then((res) => {
+        if (res.data.saved) {
           alert("Hijo guardado");
           this.son = {};
-          this.$children.sons_update.push( res.data.son );
+          this.$parent.sons_update.push( res.data.son );
         }
       });
     },
@@ -49,5 +49,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

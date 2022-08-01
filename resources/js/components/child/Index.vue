@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import FormSon from './Form'
-import TableSon from './Table'
+import FormSon from './Form.vue'
+import TableSon from './Table.vue'
 
 export default {
     props: ['parents', 'sons'],

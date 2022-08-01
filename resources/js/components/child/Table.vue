@@ -1,20 +1,22 @@
 <template>
     <table class="table mt-4">
-        <thead>
+        <thead class="text-white font-weight-bold thead-dark">
         <tr>
             <th>Name</th>
             <th>Age</th>
+            <th>Parents</th>
             <th>Actions</th>
         </tr>
         </thead>
         <tbody>
-        <tr v-for="(son, index) in sons" :key="index">
-            <td>{{ person.name }}</td>
-            <td>{{ person.age }}</td>
-            <td>{{ person.parent.name }}</td>
+        <tr v-for="(person, index) in parents " :key="index">
+            <td>{{son.name}}</td>
+            <td>{{son.age}}</td>
+            <td>{{parent.person.name}}</td>
             <td>
-                <a :href="`/Person/edit/${son.id}`"></a>
-                <button class="btn btn-danger text-white" @click="deleteSon(son)">Delete</button>
+                <!-- <a :href="`/Person/edit/${person.id}`"></a> -->
+                <button class="btn btn-danger text-white" @click="deleteSon(person, index)" >Delete</button>
+                <button class="btn btn-dark text-white" @click="editSon(person, index)">Edit</button>
             </td>
         </tr>
         </tbody>
@@ -25,16 +27,22 @@
 export default {
         props: ['sons'],
         methods: {
-            async deleteSon(Son) {
+            async deleteSon(son) {
                 await axios.delete(`/Son/delete/${son.id}`).then(res => {
                     if (res.data.delete){
                         this.$children.sons_update.splice(index, 1)
                     }
-                });
+                })
             }
         },
-    
-};
+            async editSon(son) {
+                await axios.edit(`/Son/edit/${son.id}`).then(res => {
+                    if (res.data.edit){
+                        this.$children.sons_update.splice(index, 1)                    
+                }
+            })
+        }    
+}
 </script>
 
 <style scoped>

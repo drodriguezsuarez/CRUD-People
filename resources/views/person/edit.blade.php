@@ -1,6 +1,10 @@
 <x-app>
-    
-<section class="container">
+    <section class="container">
+        <h1>Edit Person VUE</h1>
+        <form-person :cities="{{ $cities }}" :people="{{ $people }}"></form-person>
+    </section>   
+
+{{-- <section class="container">
     <h1 class="text-center mt-4">Edit person: {{ $person->name }}</h1>
     @if ($errors->any())
 <div class="alert alert_danger">
@@ -41,6 +45,6 @@
         <button class="btn btn-success">Save</button>
     </div>
 </form>
-</section>
+</section> --}}
 
 </x-app>

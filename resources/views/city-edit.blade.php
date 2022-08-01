@@ -1,5 +1,9 @@
 <x-app>
-    <section class="container">
+    <section>
+        <h1>Edit city</h1>
+        <form-city :cities="{{ $cities }}"></form-city>
+    </section>
+    {{-- <section class="container">
     
         <form action="{{ route('city.update', $city->id) }}" method="Post">
             @csrf
@@ -11,5 +15,5 @@
                 <button class="btn btn-success">Save</button>
             </div>
         </form>
-    </section>
+    </section> --}}
 </x-app>

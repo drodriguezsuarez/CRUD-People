@@ -14,6 +14,7 @@
                         <td>
                             <!-- <a :href="`/Person/edit/${city.id}`"></a> -->
                             <button class="btn btn-danger text-white" @click="deleteCity(city, index)">Delete</button>
+                            <button class="btn btn-dark text-white" @click="editCity(city, index)">Edit</button>
                         </td>
                     </tr>    
             </tbody>
@@ -30,10 +31,18 @@ export default {
             if (res.data.delete){
                 alert('Ciudad borrada correctamente')
                 this.$parent.cities_update.splice(index, 1)
-            }
-        })
-    }
-  }  
+                }
+            })
+        }
+    },
+    async editCity(city) {
+        await axios.edit(`/City/edit/${city.id}`).then(res => {
+            if (res.data.edit){
+                this.$parent.cities_update.splice(index, 1)                    
+                }
+            })
+        }
+  
 }
 </script>
 

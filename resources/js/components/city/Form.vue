@@ -16,7 +16,7 @@
 import axios from 'axios'
 
 export default {
-    // props: ['cities'],
+        // props: ['cities'],
         data(){
             return{
                 city: {
@@ -26,18 +26,19 @@ export default {
         },
         methods:{
             async storeCity(){
-                await axios.post('/City/store', this.city).then(res =>{
+                await axios.post('/city/store', this.city ).then(res =>{
                     if(res.data.saved) {
+                        alert('Ciudad guardada')
                         this.city = {
                             name: null,
                         };
-                        alert('Ciudad guardada')
-                        this.$parent.city_update.push(res.data.cities);
+                        this.$parent.city_update.push(res.data.city);
                     }
-                });
-            }
-        },
-};
+                })
+            },
+        }
+        
+}
 </script>
 
 <style scoped>

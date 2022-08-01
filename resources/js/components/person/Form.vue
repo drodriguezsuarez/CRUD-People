@@ -11,11 +11,11 @@
       </div>
       <div>
         <label><b>Age</b></label>
-        <input type="text" class="form-control" v-model="person.age" required />
+        <input type="number" class="form-control" v-model="person.age" required />
       </div>
       <div>
         <label><b>Phone</b></label>
-        <input type="tel" class="form-control" v-model="person.phone" required />
+        <input type="number" class="form-control" v-model="person.phone" required />
       </div>
       <div class="mb-5">
         <label><b>City</b></label>
@@ -45,14 +45,23 @@ export default {
     },
     methods:{
         async storePerson(){
-            await axios.post('/person/store', this.person).then(res => {
-              if (res.data.saved){
-                alert('Persona guardada')
-                this.person = {}
-                this.$parent.people_update.push(res.data.person)
-              }
-            });
-        }
+          await axios.post('/People/store', this.person).then(res => {
+            if (res.data.saved){
+              alert('Persona guardada')
+              this.person = {}
+              this.$parent.people_update.push(res.data.person)
+            }
+          })
+        },
+        async updatePerson(){
+          await axios.post(`/People/update/${person.id}`).then(res => {
+            if (res.data.saved){
+              alert('Persona actualizada')
+              this.person = {}
+              this.$parent.people_update.push(res.data.person)
+            }
+          })
+        },
     }
 }
 </script>
